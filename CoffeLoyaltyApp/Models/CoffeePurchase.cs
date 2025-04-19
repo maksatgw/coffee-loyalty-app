@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CoffeeLoyaltyApp.Models
 {
@@ -20,7 +21,9 @@ namespace CoffeeLoyaltyApp.Models
         public bool IsFree { get; set; } = false;
 
         // Navigation Properties
+        [JsonIgnore]
         public Customer? Customer { get; set; }
+        [JsonIgnore]
         public MenuItem? MenuItem { get; set; }
     }
 }
