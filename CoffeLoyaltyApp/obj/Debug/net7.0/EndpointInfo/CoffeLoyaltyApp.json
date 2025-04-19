@@ -50,17 +50,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CoffeePurchase"
+                "$ref": "#/components/schemas/PurchaseDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/CoffeePurchase"
+                "$ref": "#/components/schemas/PurchaseDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/CoffeePurchase"
+                "$ref": "#/components/schemas/PurchaseDto"
               }
             }
           }
@@ -644,6 +644,24 @@
               "$ref": "#/components/schemas/CoffeePurchase"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchaseDto": {
+        "required": [
+          "customerId",
+          "menuItemId"
+        ],
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "menuItemId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false

@@ -1,4 +1,5 @@
 ﻿using CoffeeLoyaltyApp.Data;
+using CoffeeLoyaltyApp.DTOs;
 using CoffeeLoyaltyApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,15 +40,26 @@ namespace CoffeeLoyaltyApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CoffeePurchase>> AddPurchase(CoffeePurchase purchase)
+        public async Task<ActionResult<CoffeePurchase>> AddPurchase([FromBody] PurchaseDto dto)
         {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            // Yeni CoffeePurchase objesini elle oluşturuyoruz
+            var purchase = new CoffeePurchase
+            {
+                CustomerId = dto.CustomerId,
+                MenuItemId = dto.MenuItemId,
+                // PurchaseDate ve PurchaseId zaten default atılıyor
+            };
+
             // 1. Son bedava kahveyi al
             var lastFree = await _context.CoffeePurchases
                 .Where(p => p.CustomerId == purchase.CustomerId && p.IsFree)
                 .OrderByDescending(p => p.PurchaseDate)
                 .FirstOrDefaultAsync();
 
-            DateTime threshold = lastFree?.PurchaseDate ?? DateTime.MinValue;
+            var threshold = lastFree?.PurchaseDate ?? DateTime.MinValue;
 
             // 2. O tarihten sonraki non-free kahveleri say
             var countSinceLastFree = await _context.CoffeePurchases
@@ -59,15 +71,15 @@ namespace CoffeeLoyaltyApp.Controllers
 
             // 3. 6 kahveden sonra (7. sipariş) bedava
             if (countSinceLastFree + 1 == 7)
-            {
                 purchase.IsFree = true;
-            }
 
             _context.CoffeePurchases.Add(purchase);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAllPurchases), new { id = purchase.PurchaseId }, purchase);
+            return CreatedAtAction(nameof(GetAllPurchases),
+                new { id = purchase.PurchaseId }, purchase);
         }
+
 
 
         // DELETE: api/coffeepurchases/{id}

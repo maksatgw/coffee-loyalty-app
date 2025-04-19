@@ -79,3 +79,4 @@ C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\re
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.pdb
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.genruntimeconfig.cache
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\ref\CoffeLoyaltyApp.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
