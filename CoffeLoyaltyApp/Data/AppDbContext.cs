@@ -18,7 +18,6 @@ namespace CoffeeLoyaltyApp.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Opsiyonel: İlişki ayarları (EF genelde otomatik tanır ama senin için örnek):
             modelBuilder.Entity<CoffeePurchase>()
                 .HasOne(p => p.Customer)
                 .WithMany(c => c.CoffeePurchases)
@@ -28,6 +27,12 @@ namespace CoffeeLoyaltyApp.Data
                 .HasOne(p => p.MenuItem)
                 .WithMany(m => m.CoffeePurchases)
                 .HasForeignKey(p => p.MenuItemId);
+
+            // Buraya bunu ekliyoruz:
+            modelBuilder.Entity<MenuItem>()
+                .Property(m => m.Price)
+                .HasPrecision(10, 2);
         }
+
     }
 }
