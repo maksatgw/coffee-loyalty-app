@@ -197,6 +197,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
+    "Method": "GetQrCode",
+    "RelativePath": "api/Customers/{id}/qrcode",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.MenuItemsController",
     "Method": "GetAll",
     "RelativePath": "api/MenuItems",

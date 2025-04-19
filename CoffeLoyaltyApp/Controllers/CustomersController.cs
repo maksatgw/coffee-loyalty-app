@@ -5,6 +5,7 @@ using CoffeLoyaltyApp.Repositories.CustomerRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QRCoder;
+using System.Drawing.Imaging;
 
 namespace CoffeeLoyaltyApp.Controllers
 {
@@ -58,6 +59,20 @@ namespace CoffeeLoyaltyApp.Controllers
         {
             await _repo.DeleteAsync(id);
             return NoContent();
+        }
+
+        [HttpGet("{id}/qrcode")]
+        public async Task<IActionResult> GetQrCode(Guid id)
+        {
+            var customer = await _repo.GetByIdAsync(id);
+            if (customer == null) return NotFound();
+            using var qrGen = new QRCodeGenerator();
+            using var qrCodeData = qrGen.CreateQrCode(customer.QRCode, QRCodeGenerator.ECCLevel.Q);
+            using var qrCode = new QRCode(qrCodeData);
+            using var bitmap = qrCode.GetGraphic(20);
+            using var ms = new MemoryStream();
+            bitmap.Save(ms, ImageFormat.Png);
+            return File(ms.ToArray(), "image/png");
         }
     }
 }
