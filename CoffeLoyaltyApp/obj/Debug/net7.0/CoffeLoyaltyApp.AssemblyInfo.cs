@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CoffeLoyaltyApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebdca0afa186ed334a932b8dbe6dbd9e21357969")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2160418ca7d3b560c2dd7466ce23c5d2202580f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("CoffeLoyaltyApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CoffeLoyaltyApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
