@@ -38,16 +38,27 @@ namespace CoffeeLoyaltyApp.Controllers
             return purchases;
         }
 
-        // POST: api/coffeepurchases
         [HttpPost]
         public async Task<ActionResult<CoffeePurchase>> AddPurchase(CoffeePurchase purchase)
         {
-            // Free coffee kontrolü
-            var previousCount = await _context.CoffeePurchases
-                .Where(p => p.CustomerId == purchase.CustomerId && !p.IsFree)
+            // 1. Son bedava kahveyi al
+            var lastFree = await _context.CoffeePurchases
+                .Where(p => p.CustomerId == purchase.CustomerId && p.IsFree)
+                .OrderByDescending(p => p.PurchaseDate)
+                .FirstOrDefaultAsync();
+
+            DateTime threshold = lastFree?.PurchaseDate ?? DateTime.MinValue;
+
+            // 2. O tarihten sonraki non-free kahveleri say
+            var countSinceLastFree = await _context.CoffeePurchases
+                .Where(p =>
+                    p.CustomerId == purchase.CustomerId &&
+                    !p.IsFree &&
+                    p.PurchaseDate > threshold)
                 .CountAsync();
 
-            if ((previousCount + 1) % 7 == 0)
+            // 3. 6 kahveden sonra (7. sipariş) bedava
+            if (countSinceLastFree + 1 == 7)
             {
                 purchase.IsFree = true;
             }
@@ -57,6 +68,7 @@ namespace CoffeeLoyaltyApp.Controllers
 
             return CreatedAtAction(nameof(GetAllPurchases), new { id = purchase.PurchaseId }, purchase);
         }
+
 
         // DELETE: api/coffeepurchases/{id}
         [HttpDelete("{id}")]
