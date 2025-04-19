@@ -1,3 +1,11 @@
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.csproj.AssemblyReference.cache
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.AssemblyInfoInputs.cache
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.AssemblyInfo.cs
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.csproj.CoreCompileInputs.cache
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.sourcelink.json
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\appsettings.json
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\CoffeLoyaltyApp.staticwebassets.endpoints.json
@@ -15,6 +23,7 @@ C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Mi
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
@@ -30,6 +39,7 @@ C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Mi
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\QRCoder.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -54,14 +64,6 @@ C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\ru
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.csproj.AssemblyReference.cache
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.AssemblyInfoInputs.cache
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.AssemblyInfo.cs
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.csproj.CoreCompileInputs.cache
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.sourcelink.json
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\scopedcss\bundle\CoffeLoyaltyApp.styles.css
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\staticwebassets.development.json
@@ -79,4 +81,3 @@ C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\re
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.pdb
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.genruntimeconfig.cache
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\ref\CoffeLoyaltyApp.dll
-C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll

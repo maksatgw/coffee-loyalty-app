@@ -78,6 +78,10 @@
               "target": "Package",
               "version": "[7.0.20, )"
             },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.4.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.5.0, )"

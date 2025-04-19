@@ -2,6 +2,7 @@
 using CoffeeLoyaltyApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using QRCoder;
 
 namespace CoffeeLoyaltyApp.Controllers
 {
@@ -66,6 +67,20 @@ namespace CoffeeLoyaltyApp.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("{id}/qrcode")]
+        public IActionResult GetCustomerQrCode(Guid id)
+        {
+            var customer = _context.Customers.Find(id);
+            if (customer == null) return NotFound();
+
+            // QRCoder kullanarak PNG byte dizisine çevir
+            using var qr = new QRCodeGenerator().CreateQrCode(customer.QRCode, QRCodeGenerator.ECCLevel.Q);
+            using var bmp = new QRCode(qr).GetGraphic(20);
+            using var ms = new MemoryStream();
+            bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            return File(ms.ToArray(), "image/png");
         }
 
         // DELETE: api/customers/{id}

@@ -80,6 +80,47 @@ namespace CoffeeLoyaltyApp.Controllers
                 new { id = purchase.PurchaseId }, purchase);
         }
 
+        [HttpPost("scan")]
+        public async Task<ActionResult<CoffeePurchase>> ScanAndAdd([FromBody] ScanPurchaseDto dto)
+        {
+            if (!ModelState.IsValid)
+                return ValidationProblem(ModelState);
+
+            // 1. QR koddan müşteri bul
+            var customer = await _context.Customers
+                .FirstOrDefaultAsync(c => c.QRCode == dto.QrCode);
+            if (customer == null)
+                return NotFound("Müşteri bulunamadı");
+
+            // 2. Yeni CoffeePurchase nesnesi
+            var purchase = new CoffeePurchase
+            {
+                CustomerId = customer.CustomerId,
+                MenuItemId = dto.MenuItemId
+            };
+
+            // 3. “6 + 1 bedava” mantığı (son bedaveden sonrası say)
+            var lastFree = await _context.CoffeePurchases
+                .Where(p => p.CustomerId == customer.CustomerId && p.IsFree)
+                .OrderByDescending(p => p.PurchaseDate)
+                .FirstOrDefaultAsync();
+            var threshold = lastFree?.PurchaseDate ?? DateTime.MinValue;
+            var count = await _context.CoffeePurchases
+                .Where(p => p.CustomerId == customer.CustomerId
+                         && !p.IsFree
+                         && p.PurchaseDate > threshold)
+                .CountAsync();
+            if (count + 1 == 7)
+                purchase.IsFree = true;
+
+            // 4. Kaydet
+            _context.CoffeePurchases.Add(purchase);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAllPurchases),
+                new { id = purchase.PurchaseId }, purchase);
+        }
+
 
 
         // DELETE: api/coffeepurchases/{id}
