@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CoffeePurchasesController",
-    "Method": "GetAllPurchases",
+    "Method": "GetAll",
     "RelativePath": "api/CoffeePurchases",
     "HttpMethod": "GET",
     "IsController": true,
@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeeLoyaltyApp.Models.CoffeePurchase, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeLoyaltyApp.DTOs.CoffeePurchaseDtos.PurchaseDetailDto, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -21,7 +21,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CoffeePurchasesController",
-    "Method": "AddPurchase",
+    "Method": "Create",
     "RelativePath": "api/CoffeePurchases",
     "HttpMethod": "POST",
     "IsController": true,
@@ -29,13 +29,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "CoffeeLoyaltyApp.DTOs.PurchaseDto",
+        "Type": "CoffeLoyaltyApp.DTOs.CoffeePurchaseDtos.PurchaseDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CoffeeLoyaltyApp.Models.CoffeePurchase",
+        "Type": "CoffeLoyaltyApp.DTOs.CoffeePurchaseDtos.PurchaseDetailDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -47,7 +47,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CoffeePurchasesController",
-    "Method": "DeletePurchase",
+    "Method": "Delete",
     "RelativePath": "api/CoffeePurchases/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -63,7 +63,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CoffeePurchasesController",
-    "Method": "GetPurchasesByCustomer",
+    "Method": "GetByCustomer",
     "RelativePath": "api/CoffeePurchases/customer/{customerId}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -77,7 +77,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeeLoyaltyApp.Models.CoffeePurchase, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeLoyaltyApp.DTOs.CoffeePurchaseDtos.PurchaseDetailDto, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -89,7 +89,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
-    "Method": "GetCustomers",
+    "Method": "GetAll",
     "RelativePath": "api/Customers",
     "HttpMethod": "GET",
     "IsController": true,
@@ -97,7 +97,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeeLoyaltyApp.Models.Customer, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeLoyaltyApp.DTOs.CustomerDtos.CustomerDto, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -109,21 +109,21 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
-    "Method": "CreateCustomer",
+    "Method": "Create",
     "RelativePath": "api/Customers",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "customer",
-        "Type": "CoffeeLoyaltyApp.Models.Customer",
+        "Name": "dto",
+        "Type": "CoffeLoyaltyApp.DTOs.CustomerDtos.CreateCustomerDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CoffeeLoyaltyApp.Models.Customer",
+        "Type": "CoffeLoyaltyApp.DTOs.CustomerDtos.CustomerDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -135,7 +135,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
-    "Method": "GetCustomer",
+    "Method": "Get",
     "RelativePath": "api/Customers/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -149,7 +149,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CoffeeLoyaltyApp.Models.Customer",
+        "Type": "CoffeLoyaltyApp.DTOs.CustomerDtos.CustomerDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -161,7 +161,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
-    "Method": "UpdateCustomer",
+    "Method": "Update",
     "RelativePath": "api/Customers/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -173,8 +173,8 @@
         "IsRequired": true
       },
       {
-        "Name": "customer",
-        "Type": "CoffeeLoyaltyApp.Models.Customer",
+        "Name": "dto",
+        "Type": "CoffeLoyaltyApp.DTOs.CustomerDtos.UpdateCustomerDto",
         "IsRequired": true
       }
     ],
@@ -182,7 +182,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
-    "Method": "DeleteCustomer",
+    "Method": "Delete",
     "RelativePath": "api/Customers/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -197,24 +197,8 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CoffeeLoyaltyApp.Controllers.CustomersController",
-    "Method": "GetCustomerQrCode",
-    "RelativePath": "api/Customers/{id}/qrcode",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.MenuItemsController",
-    "Method": "GetMenuItems",
+    "Method": "GetAll",
     "RelativePath": "api/MenuItems",
     "HttpMethod": "GET",
     "IsController": true,
@@ -222,7 +206,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeeLoyaltyApp.Models.MenuItem, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CoffeLoyaltyApp.DTOs.MenuItemDtos.MenuItemDto, CoffeLoyaltyApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -234,21 +218,21 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.MenuItemsController",
-    "Method": "CreateMenuItem",
+    "Method": "Create",
     "RelativePath": "api/MenuItems",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "item",
-        "Type": "CoffeeLoyaltyApp.Models.MenuItem",
+        "Name": "dto",
+        "Type": "CoffeLoyaltyApp.DTOs.MenuItemDtos.CreateMenuItemDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CoffeeLoyaltyApp.Models.MenuItem",
+        "Type": "CoffeLoyaltyApp.DTOs.MenuItemDtos.MenuItemDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -260,7 +244,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.MenuItemsController",
-    "Method": "GetMenuItem",
+    "Method": "Get",
     "RelativePath": "api/MenuItems/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -274,7 +258,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CoffeeLoyaltyApp.Models.MenuItem",
+        "Type": "CoffeLoyaltyApp.DTOs.MenuItemDtos.MenuItemDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -286,7 +270,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.MenuItemsController",
-    "Method": "UpdateMenuItem",
+    "Method": "Update",
     "RelativePath": "api/MenuItems/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -298,8 +282,8 @@
         "IsRequired": true
       },
       {
-        "Name": "item",
-        "Type": "CoffeeLoyaltyApp.Models.MenuItem",
+        "Name": "dto",
+        "Type": "CoffeLoyaltyApp.DTOs.MenuItemDtos.UpdateMenuItemDto",
         "IsRequired": true
       }
     ],
@@ -307,7 +291,7 @@
   },
   {
     "ContainingType": "CoffeeLoyaltyApp.Controllers.MenuItemsController",
-    "Method": "DeleteMenuItem",
+    "Method": "Delete",
     "RelativePath": "api/MenuItems/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,

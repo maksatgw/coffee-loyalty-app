@@ -18,7 +18,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CoffeePurchase"
+                    "$ref": "#/components/schemas/PurchaseDetailDto"
                   }
                 }
               },
@@ -26,7 +26,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CoffeePurchase"
+                    "$ref": "#/components/schemas/PurchaseDetailDto"
                   }
                 }
               },
@@ -34,7 +34,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CoffeePurchase"
+                    "$ref": "#/components/schemas/PurchaseDetailDto"
                   }
                 }
               }
@@ -71,17 +71,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/CoffeePurchase"
+                  "$ref": "#/components/schemas/PurchaseDetailDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CoffeePurchase"
+                  "$ref": "#/components/schemas/PurchaseDetailDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CoffeePurchase"
+                  "$ref": "#/components/schemas/PurchaseDetailDto"
                 }
               }
             }
@@ -114,7 +114,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CoffeePurchase"
+                    "$ref": "#/components/schemas/PurchaseDetailDto"
                   }
                 }
               },
@@ -122,7 +122,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CoffeePurchase"
+                    "$ref": "#/components/schemas/PurchaseDetailDto"
                   }
                 }
               },
@@ -130,7 +130,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CoffeePurchase"
+                    "$ref": "#/components/schemas/PurchaseDetailDto"
                   }
                 }
               }
@@ -176,7 +176,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Customer"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               },
@@ -184,7 +184,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Customer"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               },
@@ -192,7 +192,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Customer"
+                    "$ref": "#/components/schemas/CustomerDto"
                   }
                 }
               }
@@ -208,17 +208,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Customer"
+                "$ref": "#/components/schemas/CreateCustomerDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Customer"
+                "$ref": "#/components/schemas/CreateCustomerDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Customer"
+                "$ref": "#/components/schemas/CreateCustomerDto"
               }
             }
           }
@@ -229,17 +229,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               }
             }
@@ -270,17 +270,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Customer"
+                  "$ref": "#/components/schemas/CustomerDto"
                 }
               }
             }
@@ -307,17 +307,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Customer"
+                "$ref": "#/components/schemas/UpdateCustomerDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Customer"
+                "$ref": "#/components/schemas/UpdateCustomerDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Customer"
+                "$ref": "#/components/schemas/UpdateCustomerDto"
               }
             }
           }
@@ -329,30 +329,6 @@
         }
       },
       "delete": {
-        "tags": [
-          "Customers"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "style": "simple",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
-    "/api/Customers/{id}/qrcode": {
-      "get": {
         "tags": [
           "Customers"
         ],
@@ -388,7 +364,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MenuItem"
+                    "$ref": "#/components/schemas/MenuItemDto"
                   }
                 }
               },
@@ -396,7 +372,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MenuItem"
+                    "$ref": "#/components/schemas/MenuItemDto"
                   }
                 }
               },
@@ -404,7 +380,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MenuItem"
+                    "$ref": "#/components/schemas/MenuItemDto"
                   }
                 }
               }
@@ -420,17 +396,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MenuItem"
+                "$ref": "#/components/schemas/CreateMenuItemDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MenuItem"
+                "$ref": "#/components/schemas/CreateMenuItemDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MenuItem"
+                "$ref": "#/components/schemas/CreateMenuItemDto"
               }
             }
           }
@@ -441,17 +417,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuItem"
+                  "$ref": "#/components/schemas/MenuItemDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuItem"
+                  "$ref": "#/components/schemas/MenuItemDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuItem"
+                  "$ref": "#/components/schemas/MenuItemDto"
                 }
               }
             }
@@ -482,17 +458,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuItem"
+                  "$ref": "#/components/schemas/MenuItemDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuItem"
+                  "$ref": "#/components/schemas/MenuItemDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MenuItem"
+                  "$ref": "#/components/schemas/MenuItemDto"
                 }
               }
             }
@@ -519,17 +495,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MenuItem"
+                "$ref": "#/components/schemas/UpdateMenuItemDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MenuItem"
+                "$ref": "#/components/schemas/UpdateMenuItemDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MenuItem"
+                "$ref": "#/components/schemas/UpdateMenuItemDto"
               }
             }
           }
@@ -566,11 +542,105 @@
   },
   "components": {
     "schemas": {
-      "CoffeePurchase": {
+      "CreateCustomerDto": {
         "required": [
-          "customerId",
-          "menuItemId"
+          "name"
         ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "format": "tel",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateMenuItemDto": {
+        "required": [
+          "name",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 255,
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "maximum": 999,
+            "minimum": 0,
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CustomerDto": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "qrCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MenuItemDto": {
+        "type": "object",
+        "properties": {
+          "menuItemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PurchaseDetailDto": {
         "type": "object",
         "properties": {
           "purchaseId": {
@@ -595,10 +665,10 @@
         },
         "additionalProperties": false
       },
-      "Customer": {
+      "PurchaseDto": {
         "required": [
-          "name",
-          "qrCode"
+          "customerId",
+          "menuItemId"
         ],
         "type": "object",
         "properties": {
@@ -606,6 +676,20 @@
             "type": "string",
             "format": "uuid"
           },
+          "menuItemId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateCustomerDto": {
+        "required": [
+          "customerId",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
           "name": {
             "maxLength": 100,
             "minLength": 1,
@@ -621,31 +705,21 @@
             "format": "tel",
             "nullable": true
           },
-          "qrCode": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "coffeePurchases": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CoffeePurchase"
-            },
-            "nullable": true
+          "customerId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
       },
-      "MenuItem": {
+      "UpdateMenuItemDto": {
         "required": [
+          "menuItemId",
           "name",
           "price"
         ],
         "type": "object",
         "properties": {
-          "menuItemId": {
-            "type": "string",
-            "format": "uuid"
-          },
           "name": {
             "maxLength": 100,
             "minLength": 1,
@@ -661,27 +735,6 @@
             "minimum": 0,
             "type": "number",
             "format": "double"
-          },
-          "coffeePurchases": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/CoffeePurchase"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PurchaseDto": {
-        "required": [
-          "customerId",
-          "menuItemId"
-        ],
-        "type": "object",
-        "properties": {
-          "customerId": {
-            "type": "string",
-            "format": "uuid"
           },
           "menuItemId": {
             "type": "string",

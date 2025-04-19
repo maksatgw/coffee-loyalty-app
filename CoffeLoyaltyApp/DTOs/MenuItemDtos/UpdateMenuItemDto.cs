@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CoffeeLoyaltyApp.DTOs
+namespace CoffeLoyaltyApp.DTOs.MenuItemDtos
 {
-    public class PurchaseDto
+    public class UpdateMenuItemDto : CreateMenuItemDto
     {
-        [Required]
-        public Guid CustomerId { get; set; }
-
         [Required]
         public Guid MenuItemId { get; set; }
     }

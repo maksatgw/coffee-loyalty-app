@@ -1,5 +1,7 @@
 ﻿using CoffeeLoyaltyApp.Data;
 using CoffeeLoyaltyApp.Models;
+using CoffeLoyaltyApp.DTOs.MenuItemDtos;
+using CoffeLoyaltyApp.Repositories.MenuItemRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,76 +11,51 @@ namespace CoffeeLoyaltyApp.Controllers
     [ApiController]
     public class MenuItemsController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly IMenuItemRepository _repo;
+        public MenuItemsController(IMenuItemRepository repo) => _repo = repo;
 
-        public MenuItemsController(AppDbContext context)
-        {
-            _context = context;
-        }
-
-        // GET: api/menuitems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MenuItem>>> GetMenuItems()
+        public async Task<ActionResult<IEnumerable<MenuItemDto>>> GetAll()
         {
-            return await _context.MenuItems.ToListAsync();
+            var list = await _repo.GetAllAsync();
+            var dtos = list.Select(m => new MenuItemDto(m.MenuItemId, m.Name, m.Description, m.Price));
+            return Ok(dtos);
         }
 
-        // GET: api/menuitems/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<MenuItem>> GetMenuItem(Guid id)
+        public async Task<ActionResult<MenuItemDto>> Get(Guid id)
         {
-            var item = await _context.MenuItems.FindAsync(id);
-            if (item == null)
-                return NotFound();
-
-            return item;
+            var m = await _repo.GetByIdAsync(id);
+            if (m == null) return NotFound();
+            return Ok(new MenuItemDto(m.MenuItemId, m.Name, m.Description, m.Price));
         }
 
-        // POST: api/menuitems
         [HttpPost]
-        public async Task<ActionResult<MenuItem>> CreateMenuItem(MenuItem item)
+        public async Task<ActionResult<MenuItemDto>> Create([FromBody] CreateMenuItemDto dto)
         {
-            _context.MenuItems.Add(item);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetMenuItem), new { id = item.MenuItemId }, item);
+            var entity = new MenuItem { Name = dto.Name, Description = dto.Description, Price = dto.Price };
+            var created = await _repo.CreateAsync(entity);
+            var result = new MenuItemDto(created.MenuItemId, created.Name, created.Description, created.Price);
+            return CreatedAtAction(nameof(Get), new { id = created.MenuItemId }, result);
         }
 
-        // PUT: api/menuitems/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateMenuItem(Guid id, MenuItem item)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateMenuItemDto dto)
         {
-            if (id != item.MenuItemId)
-                return BadRequest();
-
-            _context.Entry(item).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.MenuItems.Any(m => m.MenuItemId == id))
-                    return NotFound();
-                else
-                    throw;
-            }
-
+            if (id != dto.MenuItemId) return BadRequest();
+            var existing = await _repo.GetByIdAsync(id);
+            if (existing == null) return NotFound();
+            existing.Name = dto.Name;
+            existing.Description = dto.Description;
+            existing.Price = dto.Price;
+            await _repo.UpdateAsync(existing);
             return NoContent();
         }
 
-        // DELETE: api/menuitems/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMenuItem(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var item = await _context.MenuItems.FindAsync(id);
-            if (item == null)
-                return NotFound();
-
-            _context.MenuItems.Remove(item);
-            await _context.SaveChangesAsync();
-
+            await _repo.DeleteAsync(id);
             return NoContent();
         }
     }

@@ -1,4 +1,7 @@
 using CoffeeLoyaltyApp.Data;
+using CoffeLoyaltyApp.Repositories.CoffeePurchaseRepository;
+using CoffeLoyaltyApp.Repositories.CustomerRepository;
+using CoffeLoyaltyApp.Repositories.MenuItemRepository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +25,11 @@ else
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 }
+
+//(DI Registration)
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
+builder.Services.AddScoped<ICoffeePurchaseRepository, CoffeePurchaseRepository>();
 
 var app = builder.Build();
 
