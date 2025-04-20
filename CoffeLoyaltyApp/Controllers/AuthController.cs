@@ -1,5 +1,6 @@
 ﻿using CoffeeLoyaltyApp.Data;
 using CoffeeLoyaltyApp.Models;
+using CoffeeLoyaltyApp.Services;
 using CoffeLoyaltyApp.DTOs;
 using CoffeLoyaltyApp.Models;
 using Microsoft.AspNetCore.Http;
@@ -15,10 +16,12 @@ namespace CoffeLoyaltyApp.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly JwtService _jwtService;
 
-        public AuthController(AppDbContext context)
+        public AuthController(AppDbContext context, JwtService jwtService)
         {
             _context = context;
+            _jwtService = jwtService;
         }
 
         // POST: /api/auth/register
@@ -70,5 +73,32 @@ namespace CoffeLoyaltyApp.Controllers
             var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
             return Convert.ToBase64String(bytes);
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<AuthResponseDto>> Login(LoginDto dto)
+        {
+            var user = await _context.Users
+                .Include(u => u.Customer)
+                .FirstOrDefaultAsync(u => u.Username == dto.Username);
+
+            if (user == null)
+                return Unauthorized("Kullanıcı bulunamadı.");
+
+            // Şifre doğrula
+            var hashedInput = HashPassword(dto.Password);
+            if (hashedInput != user.PasswordHash)
+                return Unauthorized("Geçersiz şifre.");
+
+            var token = _jwtService.GenerateToken(user);
+
+            return Ok(new AuthResponseDto
+            {
+                Token = token,
+                Role = user.Role,
+                CustomerId = user.CustomerId,
+                Expiration = DateTime.UtcNow.AddMinutes(60)
+            });
+        }
+
     }
 }

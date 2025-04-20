@@ -81,3 +81,10 @@ C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\re
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.pdb
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\CoffeLoyaltyApp.genruntimeconfig.cache
 C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\obj\Debug\net7.0\ref\CoffeLoyaltyApp.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.Owin.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.Owin.Security.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.Owin.Security.Jwt.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Microsoft.Owin.Security.OAuth.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\maksat\source\repos\CoffeLoyaltyApp\CoffeLoyaltyApp\bin\Debug\net7.0\Owin.dll
