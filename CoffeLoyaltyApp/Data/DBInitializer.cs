@@ -1,4 +1,7 @@
 ﻿using CoffeeLoyaltyApp.Models;
+using CoffeLoyaltyApp.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace CoffeeLoyaltyApp.Data
 {
@@ -33,6 +36,52 @@ namespace CoffeeLoyaltyApp.Data
 
                 context.Customers.AddRange(c1, c2);
             }
+
+            if (!context.Users.Any())
+            {
+                // SHA256 ile örnek hashleme
+                string Hash(string pwd)
+                {
+                    using var sha = SHA256.Create();
+                    var bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(pwd));
+                    return Convert.ToBase64String(bytes);
+                }
+
+                // Admin & Barista
+                var admin = new User
+                {
+                    Username = "admin",
+                    PasswordHash = Hash("admin123"),
+                    Role = "Admin"
+                };
+
+                var barista = new User
+                {
+                    Username = "barista",
+                    PasswordHash = Hash("barista123"),
+                    Role = "Barista"
+                };
+
+                // Customer + QR + User
+                var customer = new Customer
+                {
+                    Name = "Ahmet Yılmaz",
+                    Email = "ahmet@example.com",
+                    Phone = "05001234567",
+                    QRCode = Guid.NewGuid().ToString()
+                };
+
+                var user = new User
+                {
+                    Username = "ahmet",
+                    PasswordHash = Hash("123456"),
+                    Role = "Customer",
+                    Customer = customer
+                };
+
+                context.Users.AddRange(admin, barista, user);
+            }
+
 
             context.SaveChanges();
         }

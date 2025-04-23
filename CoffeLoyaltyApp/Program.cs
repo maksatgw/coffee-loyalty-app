@@ -1,8 +1,12 @@
 using CoffeeLoyaltyApp.Data;
+using CoffeeLoyaltyApp.Services;
 using CoffeLoyaltyApp.Repositories.CoffeePurchaseRepository;
 using CoffeLoyaltyApp.Repositories.CustomerRepository;
 using CoffeLoyaltyApp.Repositories.MenuItemRepository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,10 +30,29 @@ else
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 }
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+        };
+    });
+
 //(DI Registration)
+builder.Services.AddAuthorization();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IMenuItemRepository, MenuItemRepository>();
 builder.Services.AddScoped<ICoffeePurchaseRepository, CoffeePurchaseRepository>();
+builder.Services.AddScoped<JwtService>();
 
 var app = builder.Build();
 

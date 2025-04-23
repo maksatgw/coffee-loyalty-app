@@ -2,6 +2,7 @@
 using CoffeeLoyaltyApp.Models;
 using CoffeLoyaltyApp.DTOs.CustomerDtos;
 using CoffeLoyaltyApp.Repositories.CustomerRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QRCoder;
@@ -16,6 +17,7 @@ namespace CoffeeLoyaltyApp.Controllers
         private readonly ICustomerRepository _repo;
         public CustomersController(ICustomerRepository repo) => _repo = repo;
 
+        [Authorize(Roles = "Admin,Barista")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerDto>>> GetAll()
         {
@@ -54,6 +56,7 @@ namespace CoffeeLoyaltyApp.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

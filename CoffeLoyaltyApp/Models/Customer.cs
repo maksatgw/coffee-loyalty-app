@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeLoyaltyApp.Models;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace CoffeeLoyaltyApp.Models
@@ -23,5 +24,6 @@ namespace CoffeeLoyaltyApp.Models
 
         // Navigation Property
         public ICollection<CoffeePurchase>? CoffeePurchases { get; set; }
+        public User? User { get; set; }
     }
 }

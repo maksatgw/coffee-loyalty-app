@@ -2,6 +2,7 @@
 using CoffeeLoyaltyApp.Models;
 using CoffeLoyaltyApp.DTOs.CoffeePurchaseDtos;
 using CoffeLoyaltyApp.Repositories.CoffeePurchaseRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,7 +22,7 @@ namespace CoffeeLoyaltyApp.Controllers
             var dtos = list.Select(p => new PurchaseDetailDto(p.PurchaseId, p.CustomerId, p.MenuItemId, p.PurchaseDate, p.IsFree));
             return Ok(dtos);
         }
-
+        [Authorize(Roles = "Customer")]
         [HttpGet("customer/{customerId}")]
         public async Task<ActionResult<IEnumerable<PurchaseDetailDto>>> GetByCustomer(Guid customerId)
         {
@@ -39,7 +40,7 @@ namespace CoffeeLoyaltyApp.Controllers
             var result = new PurchaseDetailDto(created.PurchaseId, created.CustomerId, created.MenuItemId, created.PurchaseDate, created.IsFree);
             return CreatedAtAction(nameof(GetAll), new { id = created.PurchaseId }, result);
         }
-
+        [Authorize(Roles = "Admin,Barista")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
