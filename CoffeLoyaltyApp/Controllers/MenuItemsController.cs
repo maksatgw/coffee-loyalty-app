@@ -2,6 +2,7 @@
 using CoffeeLoyaltyApp.Models;
 using CoffeLoyaltyApp.DTOs.MenuItemDtos;
 using CoffeLoyaltyApp.Repositories.MenuItemRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +30,7 @@ namespace CoffeeLoyaltyApp.Controllers
             if (m == null) return NotFound();
             return Ok(new MenuItemDto(m.MenuItemId, m.Name, m.Description, m.Price));
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<MenuItemDto>> Create([FromBody] CreateMenuItemDto dto)
         {
@@ -38,7 +39,7 @@ namespace CoffeeLoyaltyApp.Controllers
             var result = new MenuItemDto(created.MenuItemId, created.Name, created.Description, created.Price);
             return CreatedAtAction(nameof(Get), new { id = created.MenuItemId }, result);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] UpdateMenuItemDto dto)
         {
@@ -51,7 +52,7 @@ namespace CoffeeLoyaltyApp.Controllers
             await _repo.UpdateAsync(existing);
             return NoContent();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
