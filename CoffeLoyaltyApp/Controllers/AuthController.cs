@@ -3,9 +3,11 @@ using CoffeeLoyaltyApp.Models;
 using CoffeeLoyaltyApp.Services;
 using CoffeLoyaltyApp.DTOs;
 using CoffeLoyaltyApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -35,7 +37,7 @@ namespace CoffeLoyaltyApp.Controllers
 
             Customer? customer = null;
 
-            // Eğer müşteri ise, Customer kaydı da oluştur
+            
             if (dto.Role.ToLower() == "customer")
             {
                 customer = new Customer
@@ -43,13 +45,13 @@ namespace CoffeLoyaltyApp.Controllers
                     Name = dto.Name,
                     Email = dto.Email,
                     Phone = dto.Phone,
-                    QRCode = Guid.NewGuid().ToString() // QR kod verisi, görsel değil!
+                    QRCode = Guid.NewGuid().ToString() 
                 };
 
                 _context.Customers.Add(customer);
             }
 
-            // Şifreyi hashle
+        
             string passwordHash = HashPassword(dto.Password);
 
             var user = new User
@@ -90,6 +92,34 @@ namespace CoffeLoyaltyApp.Controllers
                 return Unauthorized("Geçersiz şifre.");
 
             var token = _jwtService.GenerateToken(user);
+
+            return Ok(new AuthResponseDto
+            {
+                Token = token,
+                Role = user.Role,
+                CustomerId = user.CustomerId,
+                Expiration = DateTime.UtcNow.AddMinutes(60)
+            });
+        }
+
+        [Authorize] // sadece login olanlar erişebilir
+        [HttpGet("me")]
+        public async Task<ActionResult<AuthResponseDto>> Me()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userIdClaim == null)
+                return Unauthorized("Token geçersiz.");
+
+            var userId = Guid.Parse(userIdClaim);
+
+            var user = await _context.Users
+                .Include(u => u.Customer)
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+                return NotFound("Kullanıcı bulunamadı.");
+
+            var token = _jwtService.GenerateToken(user); // token'ı yenileyebiliriz istersen
 
             return Ok(new AuthResponseDto
             {
