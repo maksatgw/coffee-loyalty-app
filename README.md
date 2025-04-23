@@ -7,9 +7,9 @@ Müşteriler QR kodlarıyla takip edilir, “6 kahve alana 1 bedava” kampanyas
 
 ## 🔢 Sürüm
 
-> Current Version: **v0.9.0**
+> Current Version: **v1.0.0**
 
-Temel API iş mantığı tamamlandı. Oturum yönetimi, kullanıcı girişi ve Flutter uygulaması gibi geliştirmeler için v1.0.0’a doğru ilerlenmektedir.
+Temel API iş mantığı tamamlandı. Oturum yönetimi, kullanıcı girişi tamamlandı. Mobil uygulama için çalışmalara başlandı. Geliştirmeler sürecektir.
 
 
 ## 🚀 Özellikler
