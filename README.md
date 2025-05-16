@@ -57,3 +57,6 @@ Temel API iş mantığı tamamlandı. Oturum yönetimi, kullanıcı girişi tama
    ```bash
    dotnet ef database update
 
+## DevinWiki - AI Özet
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/maksatgw/coffee-loyalty-app)
+
